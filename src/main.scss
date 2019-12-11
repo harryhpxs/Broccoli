@@ -1,0 +1,315 @@
+@mixin mono-font {
+    font-family: Consolas, Menlo, Monaco, "Roboto Mono", "Courier New", monospace;
+    color: #616161;
+    transform: scale(1, 0.95);
+    -webkit-transform: scale(1, 0.95); /* Safari and Chrome */
+    -moz-transform: scale(1, 0.95); /* Firefox */
+    -ms-transform: scale(1, 0.95); /* IE 9+ */
+    -o-transform: scale(1, 0.95); /* Opera */
+}
+
+@mixin content-width {
+    max-width: 1200px;
+    width: 80%;
+}
+
+html {
+    font-size: 16px;
+}
+
+.italic {
+    font-style: italic;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+h1, h2, h3, h4, h5, h6, p{
+    @include mono-font;
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+button:focus {
+    outline: 0;
+}
+
+#header, #main, #footer {
+    width: 100%;
+    min-height: 100px;
+    display: flex;
+    justify-content: center;
+}
+
+#header {
+    top: 0;
+    border-bottom: black 1px solid;
+}
+
+.header-mid {
+    @include content-width;
+    display: flex;
+    align-items: center;
+}
+
+.header-title {
+    text-transform: uppercase;
+}
+
+#main {
+    flex: 1;
+    justify-content: center;
+}
+
+.main-content {
+    @include content-width;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+        margin: 0;
+    }
+
+    p {
+        margin: 3vh 0;
+    }
+
+    button.btn-request {
+        @include mono-font;
+        width: 12rem;
+        height: 3rem;
+        font-size: 1rem;
+        border-color: black;
+        background-color: rgb(255, 255, 255);
+        cursor: pointer;
+    }
+
+    .popup-box {
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(110, 110, 110, 0.65);
+        z-index: 99;
+    }
+
+    .done-pane {
+        width: 70vw;
+        height: 40vh;
+        max-width: 500px;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+
+        & > * {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 70%;
+            height: 10%;
+        }
+
+        p {
+            margin: 0;
+        }
+        .form-sep {
+            border-bottom: black 2px solid;
+            margin-bottom: 2rem;
+            width: 10%;
+            height: 2%
+        }
+        .done-msg {
+            margin-bottom: 3rem;
+        }
+        .btn-done {
+            @include mono-font;
+            border: black 0.08rem solid;
+            cursor: pointer;
+        }
+    }
+
+    .form-pane {
+        width: 70vw;
+        height: 60vh;
+        max-width: 400px;
+        background-color: white;
+        &, form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .btn-close {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 2.5rem;
+            height: 2.5rem;
+            margin-left: auto;
+            font-size: 2rem;
+            color: #616161;
+            cursor: pointer;
+        }
+
+        form {
+            width: 100%;
+            height: 100%;
+        }
+        form > * {
+            width: 80%;
+            //min-height: 1.2rem;
+            height: 7%;
+            margin: 2px 0;
+        }
+        .form-title {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            //font-size: 1rem;
+        }
+
+        .form-sep {
+            border-bottom: black 2px solid;
+            margin-bottom: 2rem;
+            width: 15%;
+            height: 2%
+        }
+        input {
+            font-size: 1rem;
+            @include mono-font;
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            padding-left: 0.4rem;
+            border: black 0.08rem solid;
+        }
+
+        button {
+            margin-top: 2rem;
+            padding: 0;
+            font-size: 1rem;
+            @include mono-font;
+            border: black 0.08rem solid;
+            background-color: white;
+            cursor: pointer;
+        }
+        input.input-error {
+            border-color: red;
+        }
+        div.input-error {
+            height: 4%;
+            @include mono-font;
+            font-size: 0.8rem;
+            color: rgb(255, 60, 0);
+        }
+        div.err-msg {
+            margin-top: 0.5rem;
+            @include mono-font;
+            color: rgb(255, 38, 0);
+        }
+    }
+
+    .hide {
+        display: none;
+    }
+}
+
+
+#footer {
+    bottom: 0;
+    border-top: black 1px solid;
+}
+
+.footer-mid {
+    @include content-width;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.footer-mid p {
+    margin: 3px;
+    font-size: 0.85rem;
+}
+
+@media only screen
+  and (max-device-width: 812px) {
+    html {
+        font-size: 14px;
+    }
+    h1 {
+        font-size: 2.8rem;
+    }
+    h2 {
+        font-size: 1.3rem;
+    }
+
+    p {
+        font-size: 0.9rem;
+    }
+
+    #header, #footer {
+        min-height: 10vh;
+    }
+
+    .main-content {
+        
+        .done-pane {
+            width: 80%;
+            max-width: 80%;
+            min-height: 300px;
+            p {
+                font-size: 1.1rem;
+            }
+            .form-sep {
+                margin-bottom: 4rem;
+            }
+        }
+        .form-pane {
+            width: 80%;
+            max-width: 80%;
+            min-height: 500px;
+
+            form > * {
+                width: 75%;
+                height: 8%;
+                min-height: 1.8rem;
+            }
+            form {
+                p {
+                    font-size: 1.1rem;
+                }
+                .form-sep {
+                    min-height: 0.5rem;
+                    margin-bottom: 3rem;
+                }
+            }
+        }
+
+    }
+   
+    .footer-mid {
+        p {
+            font-size: 0.85rem;
+        }
+    }
+
+}
